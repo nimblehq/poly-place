@@ -33,6 +33,8 @@ object Versions {
 
     const val OKHTTP_VERSION = "4.9.1"
 
+    const val PLACES_VERSION = "3.0.0"
+
     const val RETROFIT_VERSION = "2.9.0"
 
     const val TIMBER_LOG_VERSION = "4.7.1"
