@@ -129,6 +129,9 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:${Versions.COMPOSE_NAVIGATION_VERSION}")
     implementation("com.google.accompanist:accompanist-permissions:${Versions.ACCOMPANIST_PERMISSIONS_VERSION}")
 
+    implementation("androidx.annotation:annotation:${Versions.ANDROIDX_ANNOTATION_VERSION}")
+    implementation("androidx.slice:slice-builders:${Versions.ANDROIDX_SLICE_VERSION}")
+
     implementation("com.google.dagger:hilt-android:${Versions.HILT_VERSION}")
     implementation("androidx.hilt:hilt-navigation-compose:${Versions.HILT_NAVIGATION_COMPOSE_VERSION}")
 

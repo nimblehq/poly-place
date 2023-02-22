@@ -13,8 +13,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name=".SliceProvider"
+            android:authorities="co.co.nimblehq.showcases.poly.place"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
-        <activity android:name="co.co.nimblehq.showcases.poly.place.ui.screens.MainActivity" android:exported="true">
+                <category android:name="android.app.slice.category.SLICE" />
+
+                <data
+                    android:host="place.poly.showcases.nimblehq.co.co"
+                    android:pathPrefix="/"
+                    android:scheme="http" />
+            </intent-filter>
+        </provider>
+
+        <activity
+            android:name=".ui.screens.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -15,6 +15,7 @@ buildscript {
 plugins {
     id("io.gitlab.arturbosch.detekt").version(Versions.DETEKT_VERSION)
     id("org.jetbrains.kotlinx.kover").version(Versions.KOVER_VERSION)
+    id("org.jetbrains.kotlin.android") version "1.8.0" apply false
 }
 
 allprojects {
