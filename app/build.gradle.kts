@@ -138,14 +138,13 @@ dependencies {
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN_VERSION}")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.KOTLINX_COROUTINES_VERSION}")
+    
+    implementation("com.google.android.libraries.places:places:${Versions.PLACES_VERSION}")
 
     kapt("com.google.dagger:hilt-compiler:${Versions.HILT_VERSION}")
 
     debugImplementation("com.github.chuckerteam.chucker:library:${Versions.CHUCKER_VERSION}")
     releaseImplementation("com.github.chuckerteam.chucker:library-no-op:${Versions.CHUCKER_VERSION}")
-
-    // Places SDK
-    implementation("com.google.android.libraries.places:places:${Versions.PLACES_VERSION}")
 
     // Unit test
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.KOTLINX_COROUTINES_VERSION}")
