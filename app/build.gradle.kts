@@ -88,13 +88,6 @@ android {
         compose = true
     }
 
-    packagingOptions {
-        jniLibs {
-            // Resolve "libmockkjvmtiagent.so" https://github.com/mockk/mockk/issues/297#issuecomment-901924678
-            useLegacyPackaging = true
-        }
-    }
-
     lint {
         checkDependencies = true
         xmlReport = true
