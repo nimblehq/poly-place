@@ -12,8 +12,10 @@ object Versions {
     const val ACCOMPANIST_PERMISSIONS_VERSION = "0.28.0"
     const val ANDROID_COMMON_KTX_VERSION = "0.1.1"
     const val ANDROID_CRYPTO_VERSION = "1.0.0"
+    const val ANDROIDX_ANNOTATION_VERSION = "1.3.0"
     const val ANDROIDX_CORE_KTX_VERSION = "1.9.0"
     const val ANDROIDX_LIFECYCLE_VERSION = "2.5.1"
+    const val ANDROIDX_SLICE_VERSION = "1.0.0"
 
     const val CHUCKER_VERSION = "3.5.2"
     const val COMPOSE_BOM_VERSION = "2022.12.00"
