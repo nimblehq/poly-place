@@ -1,0 +1,40 @@
+name: Validate code quality and coverage
+
+on: push
+
+jobs:
+  validate_code_quality_and_coverage:
+    name: Validate code quality and coverage
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Set timezone
+        run: sudo timedatectl set-timezone Asia/Bangkok
+
+      - name: Checkout source code
+        uses: actions/checkout@v2.3.2
+
+      - name: Cache Gradle
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches/modules-*
+            ~/.gradle/caches/jars-*
+            ~/.gradle/caches/build-cache-*
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Run detekt
+        run: ./gradlew detekt
+
+      - name: Run lint
+        run: ./gradlew lintStagingDebug
+
+      - name: Run tests
+        run: ./gradlew jacocoTestReport
