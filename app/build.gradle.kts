@@ -159,4 +159,6 @@ dependencies {
     // Instrument test
     androidTestImplementation(platform("androidx.compose:compose-bom:${Versions.COMPOSE_BOM_VERSION}"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation("androidx.test:rules:${Versions.TEST_RULES_VERSION}")
+    androidTestImplementation("io.mockk:mockk-android:${Versions.TEST_MOCKK_VERSION}")
 }
