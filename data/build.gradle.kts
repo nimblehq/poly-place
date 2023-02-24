@@ -5,6 +5,8 @@ plugins {
     id("kover")
 }
 
+apply(from = "../config/jacoco.gradle.kts")
+
 android {
     compileSdk = Versions.ANDROID_COMPILE_SDK_VERSION
     defaultConfig {
