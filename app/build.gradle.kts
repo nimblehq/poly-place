@@ -10,8 +10,6 @@ plugins {
     id("kover")
 }
 
-apply(from = "../config/jacoco.gradle.kts")
-
 val keystoreProperties = rootDir.loadGradleProperties("signing.properties")
 
 android {

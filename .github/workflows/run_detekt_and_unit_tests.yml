@@ -1,6 +1,13 @@
 name: Run Detekt and unit tests
 
-on: push
+on:
+  pull_request:
+    types: [ opened, synchronize, edited, reopened ]
+  push:
+    branches-ignore:
+      - develop
+      - main
+      - 'release/**'
 
 jobs:
   run_detekt_and_unit_tests:
@@ -36,3 +43,10 @@ jobs:
 
       - name: Run unit tests with Kover
         run: ./gradlew koverMergedHtmlReport
+
+      - name: Archive code coverage reports
+          uses: actions/upload-artifact@v2
+          if: always()
+          with:
+            name: CodeCoverageReports
+            path: build/reports/kover/merged/
