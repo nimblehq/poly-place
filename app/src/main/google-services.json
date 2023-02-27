@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "609093937037",
+    "project_id": "poly-place",
+    "storage_bucket": "poly-place.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609093937037:android:9ce6ee0863dad6a335bfc4",
+        "android_client_info": {
+          "package_name": "co.co.nimblehq.showcases.poly.place"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609093937037-6inrmi5bqc7jms5rjg4ak3epdcks0pb5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtZQzXtnyB6bD1V2IPiWy7DC7WvZOyun4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609093937037-6inrmi5bqc7jms5rjg4ak3epdcks0pb5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

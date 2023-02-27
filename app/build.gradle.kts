@@ -8,6 +8,8 @@ plugins {
     id("dagger.hilt.android.plugin")
 
     id("kover")
+
+    id("com.google.gms.google-services")
 }
 
 val keystoreProperties = rootDir.loadGradleProperties("signing.properties")
@@ -143,6 +145,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.KOTLINX_COROUTINES_VERSION}")
     
     implementation("com.google.android.libraries.places:places:${Versions.PLACES_VERSION}")
+
+    implementation(platform("com.google.firebase:firebase-bom:${Versions.GOOGLE_FIREBASE_BOM_VERSION}"))
 
     kapt("com.google.dagger:hilt-compiler:${Versions.HILT_VERSION}")
 
