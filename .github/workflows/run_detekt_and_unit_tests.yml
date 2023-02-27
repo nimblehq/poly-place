@@ -6,7 +6,6 @@ on:
   push:
     branches-ignore:
       - develop
-      - main
       - 'release/**'
 
 jobs:
@@ -20,6 +19,11 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '11'
+
+      - name: Set up timezone
+        uses: zcong1993/setup-timezone@master
+        with:
+          timezone: Asia/Bangkok
 
       - name: Checkout source code
         uses: actions/checkout@v2.3.2
@@ -38,6 +42,12 @@ jobs:
       - name: Run Detekt
         run: ./gradlew detekt
 
+      - name: Archive Detekt reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: DetektReports
+          path: build/reports/detekt/
+
       - name: Run lint
         run: ./gradlew lintStagingDebug
 
@@ -45,8 +55,8 @@ jobs:
         run: ./gradlew koverMergedHtmlReport
 
       - name: Archive code coverage reports
-          uses: actions/upload-artifact@v2
-          if: always()
-          with:
-            name: CodeCoverageReports
-            path: build/reports/kover/merged/
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: CodeCoverageReports
+          path: build/reports/kover/merged/
