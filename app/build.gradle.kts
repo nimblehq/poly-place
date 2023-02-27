@@ -129,6 +129,9 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:${Versions.COMPOSE_NAVIGATION_VERSION}")
     implementation("com.google.accompanist:accompanist-permissions:${Versions.ACCOMPANIST_PERMISSIONS_VERSION}")
 
+    implementation("androidx.annotation:annotation:${Versions.ANDROIDX_ANNOTATION_VERSION}")
+    implementation("androidx.slice:slice-builders:${Versions.ANDROIDX_SLICE_VERSION}")
+
     implementation("com.google.dagger:hilt-android:${Versions.HILT_VERSION}")
     implementation("androidx.hilt:hilt-navigation-compose:${Versions.HILT_NAVIGATION_COMPOSE_VERSION}")
 
@@ -138,6 +141,8 @@ dependencies {
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN_VERSION}")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.KOTLINX_COROUTINES_VERSION}")
+    
+    implementation("com.google.android.libraries.places:places:${Versions.PLACES_VERSION}")
 
     kapt("com.google.dagger:hilt-compiler:${Versions.HILT_VERSION}")
 
@@ -154,4 +159,6 @@ dependencies {
     // Instrument test
     androidTestImplementation(platform("androidx.compose:compose-bom:${Versions.COMPOSE_BOM_VERSION}"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation("androidx.test:rules:${Versions.TEST_RULES_VERSION}")
+    androidTestImplementation("io.mockk:mockk-android:${Versions.TEST_MOCKK_VERSION}")
 }
