@@ -14,6 +14,7 @@ object Versions {
     const val ANDROID_CRYPTO_VERSION = "1.0.0"
     const val ANDROIDX_ANNOTATION_VERSION = "1.3.0"
     const val ANDROIDX_CORE_KTX_VERSION = "1.9.0"
+    const val ANDROIDX_CORE_SPLASH_SCREEN_VERSION = "1.0.0"
     const val ANDROIDX_LIFECYCLE_VERSION = "2.5.1"
     const val ANDROIDX_SLICE_VERSION = "1.0.0"
 
