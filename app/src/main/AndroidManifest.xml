@@ -21,8 +21,8 @@
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.app.slice.category.SLICE" />
-                <!-- TODO: This is generated code. We will fix it later -->
-                <!--                <data-->
+<!-- TODO: This is generated code. We will fix it later -->
+<!--                <data-->
 <!--                    android:host="place.poly.showcases.nimblehq.co.co"-->
 <!--                    android:pathPrefix="/"-->
 <!--                    android:scheme="http" />-->
