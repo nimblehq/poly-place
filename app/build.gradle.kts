@@ -118,6 +118,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     implementation("androidx.core:core-ktx:${Versions.ANDROIDX_CORE_KTX_VERSION}")
+    implementation("androidx.core:core-splashscreen:${Versions.ANDROIDX_CORE_SPLASH_SCREEN_VERSION}")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:${Versions.ANDROIDX_LIFECYCLE_VERSION}")
 
     implementation(platform("androidx.compose:compose-bom:${Versions.COMPOSE_BOM_VERSION}"))
