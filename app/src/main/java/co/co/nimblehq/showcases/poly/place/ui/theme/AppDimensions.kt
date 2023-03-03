@@ -15,6 +15,10 @@ class AppDimensions {
     // Text size dimensions
     val textSizeNormal = 16.sp
     val textSizeToolbar = 34.sp
+
+    // Image size dimensions
+    val iconSizeNormal = 16.dp
+    val iconSizeToolbar = 24.dp
 }
 
 internal val LocalAppDimensions = staticCompositionLocalOf { AppDimensions() }
