@@ -1,5 +1,6 @@
 package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby
 
+import android.Manifest
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -20,21 +21,47 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import co.co.nimblehq.showcases.poly.place.R
 import co.co.nimblehq.showcases.poly.place.model.UiModel
 import co.co.nimblehq.showcases.poly.place.ui.AppDestination
+import co.co.nimblehq.showcases.poly.place.ui.common.Toaster
 import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.uimodel.Restaurant
 import co.co.nimblehq.showcases.poly.place.ui.theme.*
 import co.co.nimblehq.showcases.poly.place.ui.theme.AppTheme.dimensions
+import com.google.accompanist.permissions.*
 import timber.log.Timber
 
 @Composable
 fun NearbyRestaurantsScreen(
     viewModel: NearbyRestaurantsViewModel = hiltViewModel(),
-    navigator: (destination: AppDestination) -> Unit
+    navigator: (destination: AppDestination) -> Unit,
+    onGrantedLocationPermission: () -> Unit
 ) {
     val uiModels: List<UiModel> by viewModel.uiModels.collectAsState()
 
-    NearbyRestaurantsContent(
-        uiModels = uiModels
+    LocationPermission(onGrantedLocationPermission, uiModels)
+}
+
+@OptIn(ExperimentalPermissionsApi::class)
+@Composable
+fun LocationPermission(
+    onGrantedLocationPermission: () -> Unit,
+    uiModels: List<UiModel>
+) {
+    val locationPermissionState = rememberPermissionState(
+        Manifest.permission.ACCESS_FINE_LOCATION
     )
+
+    if (locationPermissionState.status.isGranted) {
+        onGrantedLocationPermission()
+        NearbyRestaurantsContent(uiModels = uiModels)
+    } else {
+        if (locationPermissionState.status.shouldShowRationale) {
+            Toaster(LocalContext.current).display(stringResource(id = R.string.location_permission_rationale))
+        } else {
+            Toaster(LocalContext.current).display(stringResource(id = R.string.location_permission_is_required))
+        }
+        LaunchedEffect(Unit) {
+            locationPermissionState.launchPermissionRequest()
+        }
+    }
 }
 
 @Composable
