@@ -21,6 +21,7 @@ object Versions {
     const val CHUCKER_VERSION = "3.5.2"
     const val COMPOSE_BOM_VERSION = "2022.12.00"
     const val COMPOSE_COMPILER_VERSION = "1.3.2"
+    const val COMPOSE_CONSTRAINT_VERSION = "1.0.1"
     const val COMPOSE_NAVIGATION_VERSION = "2.5.3"
 
     const val HILT_VERSION = "2.44"

@@ -10,5 +10,5 @@ sealed class AppDestination(val route: String = "") {
 
     object Up : AppDestination()
 
-    object Home : AppDestination("home")
+    object NearbyRestaurants : AppDestination("nearby_restaurants")
 }

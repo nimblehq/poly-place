@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">Poly Place</string>
     <string name="error_generic">Unexpected error</string>
+
+    <string name="nearby_restaurants_title">Restaurants nearby</string>
 </resources>

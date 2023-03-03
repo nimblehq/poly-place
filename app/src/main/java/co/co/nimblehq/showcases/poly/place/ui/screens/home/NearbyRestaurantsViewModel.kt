@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class NearbyRestaurantsViewModel @Inject constructor(
     private val useCase: UseCase,
     dispatchers: DispatchersProvider
 ) : BaseViewModel(dispatchers) {
