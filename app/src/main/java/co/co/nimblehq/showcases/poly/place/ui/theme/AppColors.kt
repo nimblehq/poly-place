@@ -2,9 +2,13 @@ package co.co.nimblehq.showcases.poly.place.ui.theme
 
 import androidx.compose.material.*
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Color
 
 // Base colors here
-// e.g. internal val GreenCitrus = Color(0xFF99CC00)
+val BlueDenim = Color(0xFF0060AE)
+val Green40 = Color(0x660DF424)
+val White70 = Color(0xB3FFFFFF)
+val White20 = Color(0x33FFFFFF)
 
 /**
  * Expand the final [Colors] class to provide more custom app colors.
