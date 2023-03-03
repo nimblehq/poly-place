@@ -23,7 +23,7 @@ class HomeViewModelTest {
 
     private val mockUseCase: UseCase = mockk()
 
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var viewModel: NearbyRestaurantsViewModel
 
     private val models = listOf(Model(1), Model(2), Model(3))
 
@@ -66,7 +66,7 @@ class HomeViewModelTest {
     }
 
     private fun initViewModel(dispatchers: DispatchersProvider = coroutinesRule.testDispatcherProvider) {
-        viewModel = HomeViewModel(
+        viewModel = NearbyRestaurantsViewModel(
             mockUseCase,
             dispatchers
         )

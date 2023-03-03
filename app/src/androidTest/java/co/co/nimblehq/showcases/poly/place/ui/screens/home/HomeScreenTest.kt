@@ -19,7 +19,7 @@ class HomeScreenTest {
     @Before
     fun setUp() {
         composeRule.activity.setContent {
-            HomeScreen(
+            NearbyRestaurantsScreen(
                 navigator = { destination -> expectedAppDestination = destination }
             )
         }
