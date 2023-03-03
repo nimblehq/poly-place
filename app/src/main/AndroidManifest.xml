@@ -3,6 +3,7 @@
     package="co.co.nimblehq.showcases.poly.place">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
         android:name=".MainApplication"
