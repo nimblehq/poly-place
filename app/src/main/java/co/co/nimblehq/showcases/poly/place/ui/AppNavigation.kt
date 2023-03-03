@@ -3,7 +3,7 @@ package co.co.nimblehq.showcases.poly.place.ui
 import androidx.compose.runtime.Composable
 import androidx.navigation.*
 import androidx.navigation.compose.*
-import co.co.nimblehq.showcases.poly.place.ui.screens.nearbyrestaurant.NearbyRestaurantsScreen
+import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby.NearbyRestaurantsScreen
 
 @Composable
 fun AppNavigation(

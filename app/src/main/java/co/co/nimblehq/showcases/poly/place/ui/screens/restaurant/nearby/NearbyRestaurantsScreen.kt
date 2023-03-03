@@ -1,4 +1,4 @@
-package co.co.nimblehq.showcases.poly.place.ui.screens.nearbyrestaurant
+package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -20,7 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import co.co.nimblehq.showcases.poly.place.R
 import co.co.nimblehq.showcases.poly.place.model.UiModel
 import co.co.nimblehq.showcases.poly.place.ui.AppDestination
-import co.co.nimblehq.showcases.poly.place.ui.screens.nearbyrestaurant.uimodel.Restaurant
+import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.uimodel.Restaurant
 import co.co.nimblehq.showcases.poly.place.ui.theme.*
 import co.co.nimblehq.showcases.poly.place.ui.theme.AppTheme.dimensions
 import timber.log.Timber

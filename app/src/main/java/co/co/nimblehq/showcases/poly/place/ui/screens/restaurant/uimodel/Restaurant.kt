@@ -1,4 +1,4 @@
-package co.co.nimblehq.showcases.poly.place.ui.screens.nearbyrestaurant.uimodel
+package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.uimodel
 
 import android.graphics.Bitmap
 

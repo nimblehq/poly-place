@@ -1,4 +1,4 @@
-package co.co.nimblehq.showcases.poly.place.ui.screens.nearbyrestaurant
+package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby
 
 import co.co.nimblehq.showcases.poly.place.domain.usecase.UseCase
 import co.co.nimblehq.showcases.poly.place.model.UiModel
