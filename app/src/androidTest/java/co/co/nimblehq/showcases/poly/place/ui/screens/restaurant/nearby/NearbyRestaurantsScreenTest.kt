@@ -7,7 +7,7 @@ import androidx.compose.ui.test.onNodeWithText
 import co.co.nimblehq.showcases.poly.place.R
 import co.co.nimblehq.showcases.poly.place.ui.AppDestination
 import co.co.nimblehq.showcases.poly.place.ui.screens.MainActivity
-import co.co.nimblehq.showcases.poly.place.ui.screens.nearbyrestaurant.NearbyRestaurantsScreen
+import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby.NearbyRestaurantsScreen
 import org.junit.*
 
 class NearbyRestaurantsScreenTest {

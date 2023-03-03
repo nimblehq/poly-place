@@ -5,7 +5,7 @@ import co.co.nimblehq.showcases.poly.place.domain.model.Model
 import co.co.nimblehq.showcases.poly.place.domain.usecase.UseCase
 import co.co.nimblehq.showcases.poly.place.model.toUiModel
 import co.co.nimblehq.showcases.poly.place.test.CoroutineTestRule
-import co.co.nimblehq.showcases.poly.place.ui.screens.nearbyrestaurant.NearbyRestaurantsViewModel
+import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby.NearbyRestaurantsViewModel
 import co.co.nimblehq.showcases.poly.place.util.DispatchersProvider
 import io.kotest.matchers.shouldBe
 import io.mockk.every

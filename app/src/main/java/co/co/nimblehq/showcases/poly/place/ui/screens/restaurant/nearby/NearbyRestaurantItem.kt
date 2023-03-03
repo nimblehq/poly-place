@@ -1,4 +1,4 @@
-package co.co.nimblehq.showcases.poly.place.ui.screens.nearbyrestaurant
+package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import co.co.nimblehq.showcases.poly.place.R
-import co.co.nimblehq.showcases.poly.place.ui.screens.nearbyrestaurant.uimodel.Restaurant
+import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.uimodel.Restaurant
 import co.co.nimblehq.showcases.poly.place.ui.theme.*
 import co.co.nimblehq.showcases.poly.place.ui.theme.AppTheme.dimensions
 
