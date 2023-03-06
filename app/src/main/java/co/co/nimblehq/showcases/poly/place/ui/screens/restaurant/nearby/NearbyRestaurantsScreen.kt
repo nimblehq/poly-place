@@ -1,8 +1,7 @@
 package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -24,6 +23,7 @@ import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.uimodel.Restaur
 import co.co.nimblehq.showcases.poly.place.ui.theme.*
 import co.co.nimblehq.showcases.poly.place.ui.theme.AppTheme.dimensions
 import timber.log.Timber
+import java.util.UUID
 
 @Composable
 fun NearbyRestaurantsScreen(
@@ -45,55 +45,61 @@ private fun NearbyRestaurantsContent(
     // TODO: Remove this when implementing integrate task: https://github.com/nimblehq/poly-place/issues/32
     val mockRestaurants = arrayListOf(
         Restaurant(
+            id = UUID.randomUUID().toString(),
             thumbnailImage = ContextCompat.getDrawable(
                 LocalContext.current,
                 R.drawable.im_restaurant_mock
-            )!!.toBitmap(),
+            )!!.toBitmap(width = 600, height = 600),
             name = "Dragon X",
             address = "111, Dr. Strange street",
             distance = "50 m"
         ),
         Restaurant(
+            id = UUID.randomUUID().toString(),
             thumbnailImage = ContextCompat.getDrawable(
                 LocalContext.current,
                 R.drawable.im_restaurant_mock
-            )!!.toBitmap(),
+            )!!.toBitmap(width = 600, height = 600),
             name = "Dragon X",
             address = "111, Dr. Strange street",
             distance = "50 m"
         ),
         Restaurant(
+            id = UUID.randomUUID().toString(),
             thumbnailImage = ContextCompat.getDrawable(
                 LocalContext.current,
                 R.drawable.im_restaurant_mock
-            )!!.toBitmap(),
+            )!!.toBitmap(width = 600, height = 600),
             name = "Dragon X",
             address = "111, Dr. Strange street",
             distance = "50 m"
         ),
         Restaurant(
+            id = UUID.randomUUID().toString(),
             thumbnailImage = ContextCompat.getDrawable(
                 LocalContext.current,
                 R.drawable.im_restaurant_mock
-            )!!.toBitmap(),
+            )!!.toBitmap(width = 600, height = 600),
             name = "Dragon X",
             address = "111, Dr. Strange street",
             distance = "50 m"
         ),
         Restaurant(
+            id = UUID.randomUUID().toString(),
             thumbnailImage = ContextCompat.getDrawable(
                 LocalContext.current,
                 R.drawable.im_restaurant_mock
-            )!!.toBitmap(),
+            )!!.toBitmap(width = 600, height = 600),
             name = "Dragon X",
             address = "111, Dr. Strange street",
             distance = "50 m"
         ),
         Restaurant(
+            id = UUID.randomUUID().toString(),
             thumbnailImage = ContextCompat.getDrawable(
                 LocalContext.current,
                 R.drawable.im_restaurant_mock
-            )!!.toBitmap(),
+            )!!.toBitmap(width = 600, height = 600),
             name = "Dragon X",
             address = "111, Dr. Strange street",
             distance = "50 m"
@@ -176,8 +182,11 @@ private fun NearbyRestaurantList(
         horizontalArrangement = Arrangement.spacedBy(dimensions.spacingNormal),
         columns = GridCells.Fixed(2)
     ) {
-        items(restaurants.size) { index ->
-            NearbyRestaurantItem(restaurants[index])
+        itemsIndexed(
+            items = restaurants,
+            key = { _, item -> item.id }
+        ) { _, item ->
+            NearbyRestaurantItem(item)
         }
     }
 }

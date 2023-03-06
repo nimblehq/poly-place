@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -21,6 +22,7 @@ import co.co.nimblehq.showcases.poly.place.R
 import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.uimodel.Restaurant
 import co.co.nimblehq.showcases.poly.place.ui.theme.*
 import co.co.nimblehq.showcases.poly.place.ui.theme.AppTheme.dimensions
+import java.util.UUID
 
 @Composable
 fun NearbyRestaurantItem(
@@ -40,6 +42,7 @@ fun NearbyRestaurantItem(
                     )
                 ),
             bitmap = restaurant.thumbnailImage.asImageBitmap(),
+            contentScale = ContentScale.Crop,
             contentDescription = null,
         )
         Text(
@@ -93,10 +96,11 @@ private fun NearbyRestaurantItemPreview() {
     ComposeTheme {
         NearbyRestaurantItem(
             Restaurant(
+                id = UUID.randomUUID().toString(),
                 thumbnailImage = ContextCompat.getDrawable(
                     LocalContext.current,
                     R.drawable.im_restaurant_mock
-                )!!.toBitmap(),
+                )!!.toBitmap(width = 600, height = 600),
                 name = "Dragon X",
                 address = "111, Dr. Strange street",
                 distance = "50 m"
