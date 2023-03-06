@@ -25,6 +25,8 @@ import co.co.nimblehq.showcases.poly.place.ui.theme.AppTheme.dimensions
 import timber.log.Timber
 import java.util.UUID
 
+private const val RESTAURANTS_GRID_COLUMNS = 2
+
 @Composable
 fun NearbyRestaurantsScreen(
     viewModel: NearbyRestaurantsViewModel = hiltViewModel(),
@@ -180,7 +182,7 @@ private fun NearbyRestaurantList(
             ),
         verticalArrangement = Arrangement.spacedBy(dimensions.spacingNormal),
         horizontalArrangement = Arrangement.spacedBy(dimensions.spacingNormal),
-        columns = GridCells.Fixed(2)
+        columns = GridCells.Fixed(RESTAURANTS_GRID_COLUMNS)
     ) {
         itemsIndexed(
             items = restaurants,

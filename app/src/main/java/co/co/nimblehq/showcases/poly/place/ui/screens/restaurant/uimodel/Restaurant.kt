@@ -7,5 +7,5 @@ data class Restaurant(
     val thumbnailImage: Bitmap,
     val name: String,
     val address: String,
-    val distance: String,
+    val distance: String
 )
