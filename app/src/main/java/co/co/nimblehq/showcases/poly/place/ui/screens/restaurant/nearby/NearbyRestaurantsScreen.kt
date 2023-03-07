@@ -2,8 +2,7 @@ package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby
 
 import android.Manifest
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -13,11 +12,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.hilt.navigation.compose.hiltViewModel
+import co.co.nimblehq.showcases.poly.place.BuildConfig
 import co.co.nimblehq.showcases.poly.place.R
 import co.co.nimblehq.showcases.poly.place.model.UiModel
 import co.co.nimblehq.showcases.poly.place.ui.AppDestination
@@ -27,6 +29,9 @@ import co.co.nimblehq.showcases.poly.place.ui.theme.*
 import co.co.nimblehq.showcases.poly.place.ui.theme.AppTheme.dimensions
 import com.google.accompanist.permissions.*
 import timber.log.Timber
+import java.util.*
+
+private const val RESTAURANTS_GRID_COLUMNS = 2
 
 @Composable
 fun NearbyRestaurantsScreen(
@@ -72,71 +77,97 @@ private fun NearbyRestaurantsContent(
     // TODO: Remove this when implementing integrate task: https://github.com/nimblehq/poly-place/issues/32
     val mockRestaurants = arrayListOf(
         Restaurant(
+            id = UUID.randomUUID().toString(),
             thumbnailImage = ContextCompat.getDrawable(
                 LocalContext.current,
                 R.drawable.im_restaurant_mock
-            )!!.toBitmap(),
+            )!!.toBitmap(width = 600, height = 600),
             name = "Dragon X",
             address = "111, Dr. Strange street",
             distance = "50 m"
         ),
         Restaurant(
+            id = UUID.randomUUID().toString(),
             thumbnailImage = ContextCompat.getDrawable(
                 LocalContext.current,
                 R.drawable.im_restaurant_mock
-            )!!.toBitmap(),
+            )!!.toBitmap(width = 600, height = 600),
             name = "Dragon X",
             address = "111, Dr. Strange street",
             distance = "50 m"
         ),
         Restaurant(
+            id = UUID.randomUUID().toString(),
             thumbnailImage = ContextCompat.getDrawable(
                 LocalContext.current,
                 R.drawable.im_restaurant_mock
-            )!!.toBitmap(),
+            )!!.toBitmap(width = 600, height = 600),
             name = "Dragon X",
             address = "111, Dr. Strange street",
             distance = "50 m"
         ),
         Restaurant(
+            id = UUID.randomUUID().toString(),
             thumbnailImage = ContextCompat.getDrawable(
                 LocalContext.current,
                 R.drawable.im_restaurant_mock
-            )!!.toBitmap(),
+            )!!.toBitmap(width = 600, height = 600),
             name = "Dragon X",
             address = "111, Dr. Strange street",
             distance = "50 m"
         ),
         Restaurant(
+            id = UUID.randomUUID().toString(),
             thumbnailImage = ContextCompat.getDrawable(
                 LocalContext.current,
                 R.drawable.im_restaurant_mock
-            )!!.toBitmap(),
+            )!!.toBitmap(width = 600, height = 600),
             name = "Dragon X",
             address = "111, Dr. Strange street",
             distance = "50 m"
         ),
         Restaurant(
+            id = UUID.randomUUID().toString(),
             thumbnailImage = ContextCompat.getDrawable(
                 LocalContext.current,
                 R.drawable.im_restaurant_mock
-            )!!.toBitmap(),
+            )!!.toBitmap(width = 600, height = 600),
             name = "Dragon X",
             address = "111, Dr. Strange street",
             distance = "50 m"
         )
     )
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .paint(
-                painter = painterResource(id = R.drawable.bg_nearby_restaurants),
-                contentScale = ContentScale.FillBounds
-            )
+    Scaffold(
+        bottomBar = {
+            BottomAppBar(
+                modifier = Modifier.fillMaxWidth(),
+                contentPadding = PaddingValues(bottom = dimensions.spacingSmall),
+                backgroundColor = ViolentViolet89,
+                elevation = 0.dp
+            ) {
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    color = Color.White,
+                    fontSize = dimensions.textSizeNormal,
+                    text = "${stringResource(id = R.string.app_version)} ${BuildConfig.VERSION_NAME}",
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
     ) {
-        NearbyRestaurantsToolbar()
-        NearbyRestaurantList(mockRestaurants)
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it)
+                .paint(
+                    painter = painterResource(id = R.drawable.bg_nearby_restaurants),
+                    contentScale = ContentScale.FillBounds
+                )
+        ) {
+            NearbyRestaurantsToolbar()
+            NearbyRestaurantList(mockRestaurants)
+        }
     }
     Timber.d("Result : $uiModels")
 }
@@ -192,19 +223,17 @@ private fun NearbyRestaurantList(
 ) {
     LazyVerticalGrid(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(
-                start = dimensions.spacingNormal,
-                end = dimensions.spacingNormal,
-                top = dimensions.spacingNormal,
-                bottom = dimensions.spacingHuge
-            ),
+            .fillMaxSize()
+            .padding(dimensions.spacingNormal),
         verticalArrangement = Arrangement.spacedBy(dimensions.spacingNormal),
         horizontalArrangement = Arrangement.spacedBy(dimensions.spacingNormal),
-        columns = GridCells.Fixed(2)
+        columns = GridCells.Fixed(RESTAURANTS_GRID_COLUMNS)
     ) {
-        items(restaurants.size) { index ->
-            NearbyRestaurantItem(restaurants[index])
+        items(
+            items = restaurants,
+            key = { it.id }
+        ) { item ->
+            NearbyRestaurantItem(item)
         }
     }
 }

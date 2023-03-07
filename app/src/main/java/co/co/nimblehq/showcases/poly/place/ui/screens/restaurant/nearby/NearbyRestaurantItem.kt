@@ -3,24 +3,24 @@ package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import co.co.nimblehq.showcases.poly.place.R
+import co.co.nimblehq.showcases.poly.place.ui.common.StartDrawableText
 import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.uimodel.Restaurant
 import co.co.nimblehq.showcases.poly.place.ui.theme.*
 import co.co.nimblehq.showcases.poly.place.ui.theme.AppTheme.dimensions
+import java.util.*
 
 @Composable
 fun NearbyRestaurantItem(
@@ -33,6 +33,7 @@ fun NearbyRestaurantItem(
         Image(
             modifier = Modifier
                 .fillMaxWidth()
+                .aspectRatio(1.1f)
                 .clip(
                     RoundedCornerShape(
                         topStart = dimensions.spacingSmall,
@@ -40,50 +41,26 @@ fun NearbyRestaurantItem(
                     )
                 ),
             bitmap = restaurant.thumbnailImage.asImageBitmap(),
-            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            contentDescription = null
         )
         Text(
             modifier = Modifier.fillMaxWidth(),
             color = Color.White,
             fontSize = dimensions.textSizeNormal,
             textAlign = TextAlign.Center,
-            text = restaurant.name,
+            text = restaurant.name
         )
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Icon(
-                modifier = Modifier.size(dimensions.iconSizeNormal),
-                painter = painterResource(id = R.drawable.ic_location),
-                contentDescription = null,
-                tint = Color.White
-            )
-            Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = dimensions.spacingSmall),
-                color = White70,
-                fontSize = dimensions.textSizeNormal,
-                text = restaurant.address,
-            )
-        }
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                modifier = Modifier.size(dimensions.iconSizeNormal),
-                painter = painterResource(id = R.drawable.ic_compass),
-                contentDescription = null,
-                tint = Color.White
-            )
-            Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = dimensions.spacingSmall),
-                color = Green40,
-                fontSize = dimensions.textSizeNormal,
-                text = restaurant.distance,
-            )
-        }
+        StartDrawableText(
+            iconResId = R.drawable.ic_location,
+            textColor = White70,
+            text = restaurant.address
+        )
+        StartDrawableText(
+            iconResId = R.drawable.ic_compass,
+            textColor = Green40,
+            text = restaurant.distance
+        )
     }
 }
 
@@ -93,10 +70,11 @@ private fun NearbyRestaurantItemPreview() {
     ComposeTheme {
         NearbyRestaurantItem(
             Restaurant(
+                id = UUID.randomUUID().toString(),
                 thumbnailImage = ContextCompat.getDrawable(
                     LocalContext.current,
-                    R.drawable.im_restaurant_mock
-                )!!.toBitmap(),
+                    R.drawable.bg_nearby_restaurants
+                )!!.toBitmap(width = 600, height = 600),
                 name = "Dragon X",
                 address = "111, Dr. Strange street",
                 distance = "50 m"
