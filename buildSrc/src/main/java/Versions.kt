@@ -15,12 +15,12 @@ object Versions {
     const val ANDROIDX_ANNOTATION_VERSION = "1.3.0"
     const val ANDROIDX_CORE_KTX_VERSION = "1.9.0"
     const val ANDROIDX_CORE_SPLASH_SCREEN_VERSION = "1.0.0"
-    const val ANDROIDX_LIFECYCLE_VERSION = "2.5.1"
+    const val ANDROIDX_LIFECYCLE_VERSION = "2.6.0-rc01"
     const val ANDROIDX_SLICE_VERSION = "1.0.0"
 
     const val CHUCKER_VERSION = "3.5.2"
     const val COMPOSE_BOM_VERSION = "2022.12.00"
-    const val COMPOSE_COMPILER_VERSION = "1.3.2"
+    const val COMPOSE_COMPILER_VERSION = "1.4.3"
     const val COMPOSE_CONSTRAINT_VERSION = "1.0.1"
     const val COMPOSE_NAVIGATION_VERSION = "2.5.3"
 
@@ -29,7 +29,7 @@ object Versions {
 
     const val JAVAX_INJECT_VERSION = "1"
 
-    const val KOTLIN_VERSION = "1.7.20"
+    const val KOTLIN_VERSION = "1.8.10"
     const val KOTLINX_COROUTINES_VERSION = "1.6.4"
     const val KOVER_VERSION = "0.6.0"
 
