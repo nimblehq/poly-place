@@ -28,10 +28,12 @@ fun StartDrawableText(
 ) {
     Row(
         modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.Top
     ) {
         Icon(
-            modifier = Modifier.size(iconSize),
+            modifier = Modifier
+                .size(iconSize)
+                .padding(top = dimensions.spacingSmallest),
             painter = painterResource(id = iconResId),
             contentDescription = null,
             tint = iconTint
@@ -41,7 +43,7 @@ fun StartDrawableText(
                 .padding(start = drawablePadding),
             color = textColor,
             fontSize = textSize,
-            text = text.orEmpty(),
+            text = text.orEmpty()
         )
     }
 }
