@@ -58,11 +58,13 @@ fun LocationPermission(
         onGrantedLocationPermission()
         NearbyRestaurantsContent(uiModels = uiModels)
     } else {
-        if (locationPermissionState.status.shouldShowRationale) {
-            Toaster(LocalContext.current).display(stringResource(id = R.string.location_permission_rationale))
+        val locationPermissionResId = if (locationPermissionState.status.shouldShowRationale) {
+            R.string.location_permission_rationale
         } else {
-            Toaster(LocalContext.current).display(stringResource(id = R.string.location_permission_is_required))
+            R.string.location_permission_is_required
         }
+        Toaster(LocalContext.current).display(stringResource(id = locationPermissionResId))
+
         LaunchedEffect(Unit) {
             locationPermissionState.launchPermissionRequest()
         }

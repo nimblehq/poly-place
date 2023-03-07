@@ -17,7 +17,7 @@ fun AppNavigation(
         composable(AppDestination.NearbyRestaurants) {
             NearbyRestaurantsScreen(
                 navigator = { destination -> navController.navigate(destination) },
-                onGrantedLocationPermission = { /* TODO: Call Places SDK in https://github.com/nimblehq/poly-place/issues/32 */}
+                onGrantedLocationPermission = { /* TODO: Call Places SDK in https://github.com/nimblehq/poly-place/issues/32 */ }
             )
         }
     }
