@@ -171,7 +171,7 @@ private fun NearbyRestaurantsToolbar() {
                     end.linkTo(parent.end, spacingLarge)
                     centerVerticallyTo(title)
                 },
-            painter = painterResource(id = R.drawable.ic_locationing),
+            painter = painterResource(id = R.drawable.ic_location),
             contentDescription = null,
             tint = BlueDenim
         )
