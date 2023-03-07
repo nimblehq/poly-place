@@ -52,12 +52,12 @@ fun NearbyRestaurantItem(
             text = restaurant.name
         )
         StartDrawableText(
-            iconResId = R.drawable.ic_location,
+            iconResId = R.drawable.ic_address,
             textColor = White70,
             text = restaurant.address
         )
         StartDrawableText(
-            iconResId = R.drawable.ic_compass,
+            iconResId = R.drawable.ic_distance,
             textColor = Green40,
             text = restaurant.distance
         )

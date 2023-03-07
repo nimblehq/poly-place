@@ -52,7 +52,7 @@ fun StartDrawableText(
 @Composable
 fun StartDrawableTextPreview() {
     StartDrawableText(
-        iconResId = R.drawable.ic_compass,
+        iconResId = R.drawable.ic_distance,
         text = "Start drawable text"
     )
 }
