@@ -1,4 +1,4 @@
-package co.co.nimblehq.showcases.poly.place.ui.screens.home
+package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby
 
 import co.co.nimblehq.showcases.poly.place.domain.usecase.UseCase
 import co.co.nimblehq.showcases.poly.place.model.UiModel
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class NearbyRestaurantsViewModel @Inject constructor(
     private val useCase: UseCase,
     dispatchers: DispatchersProvider
 ) : BaseViewModel(dispatchers) {

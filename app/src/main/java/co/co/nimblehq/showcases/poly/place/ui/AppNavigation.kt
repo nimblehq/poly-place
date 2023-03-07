@@ -3,19 +3,19 @@ package co.co.nimblehq.showcases.poly.place.ui
 import androidx.compose.runtime.Composable
 import androidx.navigation.*
 import androidx.navigation.compose.*
-import co.co.nimblehq.showcases.poly.place.ui.screens.home.HomeScreen
+import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby.NearbyRestaurantsScreen
 
 @Composable
 fun AppNavigation(
     navController: NavHostController = rememberNavController(),
-    startDestination: String = AppDestination.Home.destination
+    startDestination: String = AppDestination.NearbyRestaurants.destination
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination
     ) {
-        composable(AppDestination.Home) {
-            HomeScreen(
+        composable(AppDestination.NearbyRestaurants) {
+            NearbyRestaurantsScreen(
                 navigator = { destination -> navController.navigate(destination) }
             )
         }

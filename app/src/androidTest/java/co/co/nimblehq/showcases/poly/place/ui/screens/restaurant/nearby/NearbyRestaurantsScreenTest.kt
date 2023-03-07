@@ -1,4 +1,4 @@
-package co.co.nimblehq.showcases.poly.place.ui.screens.home
+package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby
 
 import androidx.activity.compose.setContent
 import androidx.compose.ui.test.assertIsDisplayed
@@ -9,7 +9,7 @@ import co.co.nimblehq.showcases.poly.place.ui.AppDestination
 import co.co.nimblehq.showcases.poly.place.ui.screens.MainActivity
 import org.junit.*
 
-class HomeScreenTest {
+class NearbyRestaurantsScreenTest {
 
     @get:Rule
     val composeRule = createAndroidComposeRule<MainActivity>()
@@ -19,7 +19,7 @@ class HomeScreenTest {
     @Before
     fun setUp() {
         composeRule.activity.setContent {
-            HomeScreen(
+            NearbyRestaurantsScreen(
                 navigator = { destination -> expectedAppDestination = destination }
             )
         }

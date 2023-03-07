@@ -1,4 +1,4 @@
-package co.co.nimblehq.showcases.poly.place.ui.screens.home
+package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby
 
 import app.cash.turbine.test
 import co.co.nimblehq.showcases.poly.place.domain.model.Model
@@ -16,14 +16,14 @@ import kotlinx.coroutines.test.*
 import org.junit.*
 
 @ExperimentalCoroutinesApi
-class HomeViewModelTest {
+class NearbyRestaurantsTest {
 
     @get:Rule
     val coroutinesRule = CoroutineTestRule()
 
     private val mockUseCase: UseCase = mockk()
 
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var viewModel: NearbyRestaurantsViewModel
 
     private val models = listOf(Model(1), Model(2), Model(3))
 
@@ -66,7 +66,7 @@ class HomeViewModelTest {
     }
 
     private fun initViewModel(dispatchers: DispatchersProvider = coroutinesRule.testDispatcherProvider) {
-        viewModel = HomeViewModel(
+        viewModel = NearbyRestaurantsViewModel(
             mockUseCase,
             dispatchers
         )
