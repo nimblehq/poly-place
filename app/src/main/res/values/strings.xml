@@ -4,5 +4,8 @@
     <string name="app_version">Version</string>
     <string name="error_generic">Unexpected error</string>
 
+    <string name="location_permission_rationale">The location is important for this app. Please grant the permission.</string>
+    <string name="location_permission_is_required">Location permission is required for this feature. Please grant the permission.</string>
+
     <string name="nearby_restaurants_title">Restaurants nearby</string>
 </resources>
