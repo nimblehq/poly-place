@@ -33,6 +33,7 @@ fun NearbyRestaurantItem(
         Image(
             modifier = Modifier
                 .fillMaxWidth()
+                .aspectRatio(1.1f)
                 .clip(
                     RoundedCornerShape(
                         topStart = dimensions.spacingSmall,
@@ -41,14 +42,14 @@ fun NearbyRestaurantItem(
                 ),
             bitmap = restaurant.thumbnailImage.asImageBitmap(),
             contentScale = ContentScale.Crop,
-            contentDescription = null,
+            contentDescription = null
         )
         Text(
             modifier = Modifier.fillMaxWidth(),
             color = Color.White,
             fontSize = dimensions.textSizeNormal,
             textAlign = TextAlign.Center,
-            text = restaurant.name,
+            text = restaurant.name
         )
         StartDrawableText(
             iconResId = R.drawable.ic_location,

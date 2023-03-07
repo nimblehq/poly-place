@@ -11,11 +11,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.hilt.navigation.compose.hiltViewModel
+import co.co.nimblehq.showcases.poly.place.BuildConfig
 import co.co.nimblehq.showcases.poly.place.R
 import co.co.nimblehq.showcases.poly.place.model.UiModel
 import co.co.nimblehq.showcases.poly.place.ui.AppDestination
@@ -23,7 +26,7 @@ import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.uimodel.Restaur
 import co.co.nimblehq.showcases.poly.place.ui.theme.*
 import co.co.nimblehq.showcases.poly.place.ui.theme.AppTheme.dimensions
 import timber.log.Timber
-import java.util.UUID
+import java.util.*
 
 private const val RESTAURANTS_GRID_COLUMNS = 2
 
@@ -108,16 +111,36 @@ private fun NearbyRestaurantsContent(
         )
     )
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .paint(
-                painter = painterResource(id = R.drawable.bg_nearby_restaurants),
-                contentScale = ContentScale.FillBounds
-            )
+    Scaffold(
+        bottomBar = {
+            BottomAppBar(
+                modifier = Modifier.fillMaxWidth(),
+                contentPadding = PaddingValues(bottom = dimensions.spacingSmall),
+                backgroundColor = ViolentViolet89,
+                elevation = 0.dp
+            ) {
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    color = Color.White,
+                    fontSize = dimensions.textSizeNormal,
+                    text = "${stringResource(id = R.string.app_version)} ${BuildConfig.VERSION_NAME}",
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
     ) {
-        NearbyRestaurantsToolbar()
-        NearbyRestaurantList(mockRestaurants)
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it)
+                .paint(
+                    painter = painterResource(id = R.drawable.bg_nearby_restaurants),
+                    contentScale = ContentScale.FillBounds
+                )
+        ) {
+            NearbyRestaurantsToolbar()
+            NearbyRestaurantList(mockRestaurants)
+        }
     }
     Timber.d("Result : $uiModels")
 }
@@ -173,21 +196,16 @@ private fun NearbyRestaurantList(
 ) {
     LazyVerticalGrid(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(
-                start = dimensions.spacingNormal,
-                end = dimensions.spacingNormal,
-                top = dimensions.spacingNormal,
-                bottom = dimensions.spacingHuge
-            ),
+            .fillMaxSize()
+            .padding(dimensions.spacingNormal),
         verticalArrangement = Arrangement.spacedBy(dimensions.spacingNormal),
         horizontalArrangement = Arrangement.spacedBy(dimensions.spacingNormal),
         columns = GridCells.Fixed(RESTAURANTS_GRID_COLUMNS)
     ) {
-        itemsIndexed(
+        items(
             items = restaurants,
-            key = { _, item -> item.id }
-        ) { _, item ->
+            key = { it.id }
+        ) { item ->
             NearbyRestaurantItem(item)
         }
     }
