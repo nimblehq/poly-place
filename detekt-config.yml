@@ -68,6 +68,7 @@ complexity:
   LongMethod:
     active: true
     threshold: 60
+    ignoreAnnotated: [ 'Composable' ]
   LongParameterList:
     active: true
     functionThreshold: 5
@@ -205,7 +206,7 @@ naming:
     active: true
     constantPattern: '[A-Z][_A-Za-z0-9]*'
     propertyPattern: '[A-Za-z][A-Za-z0-9]*'
-    privatePropertyPattern: '(_)?[a-z][A-Za-z0-9]*'
+    privatePropertyPattern: '(_)?[A-Za-z][A-Za-z0-9]*'
   VariableMaxLength:
     active: false
     maximumVariableNameLength: 64
@@ -293,6 +294,7 @@ style:
     ignoreAnnotation: false
     ignoreNamedArgument: true
     ignoreEnums: false
+    ignoreAnnotated: [ 'Composable' ]
   MaxLineLength:
     active: true
     maxLineLength: 120
