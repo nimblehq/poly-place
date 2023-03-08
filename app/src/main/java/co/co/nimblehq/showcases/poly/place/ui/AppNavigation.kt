@@ -3,7 +3,9 @@ package co.co.nimblehq.showcases.poly.place.ui
 import androidx.compose.runtime.Composable
 import androidx.navigation.*
 import androidx.navigation.compose.*
+import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.details.RestaurantDetailsScreen
 import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby.NearbyRestaurantsScreen
+import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.uimodel.Restaurant
 
 @Composable
 fun AppNavigation(
@@ -18,6 +20,14 @@ fun AppNavigation(
             NearbyRestaurantsScreen(
                 navigator = { destination -> navController.navigate(destination) },
                 onGrantedLocationPermission = { /* TODO: Call Places SDK in https://github.com/nimblehq/poly-place/issues/32 */ }
+            )
+        }
+
+        composable(AppDestination.RestaurantDetails) {
+            RestaurantDetailsScreen(
+                navigator = { destination -> navController.navigate(destination) },
+                restaurant = navController.previousBackStackEntry?.savedStateHandle
+                    ?.get<Restaurant>(KeyRestaurant)
             )
         }
     }
