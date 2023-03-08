@@ -39,7 +39,7 @@ fun StartDrawableText(
             tint = iconTint
         )
         Text(
-            modifier = modifier
+            modifier = Modifier
                 .padding(start = drawablePadding),
             color = textColor,
             fontSize = textSize,
