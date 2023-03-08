@@ -42,6 +42,7 @@ class SliceProvider : SliceProvider() {
     /**
      * Construct the Slice and bind data if available.
      */
+    @SuppressWarnings("ReturnCount")
     override fun onBindSlice(sliceUri: Uri): Slice? {
         // Note: you should switch your build.gradle dependency to
         // slice-builders-ktx for a nicer interface in Kotlin.
