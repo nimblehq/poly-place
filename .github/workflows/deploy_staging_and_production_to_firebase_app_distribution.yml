@@ -1,0 +1,77 @@
+name: Deploy staging and production to Firebase App Distribution
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy_staging_and_production_to_firebase_app_distribution:
+    name: Deploy staging and production to Firebase App Distribution
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Set up timezone
+        uses: zcong1993/setup-timezone@master
+        with:
+          timezone: Asia/Bangkok
+
+      - name: Checkout source code
+        uses: actions/checkout@v2.3.2
+
+      - name: Cache Gradle
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches/modules-*
+            ~/.gradle/caches/jars-*
+            ~/.gradle/caches/build-cache-*
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Run Detekt
+        run: ./gradlew detekt
+
+      - name: Archive Detekt reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: DetektReports
+          path: build/reports/detekt/
+
+      - name: Run unit tests with Kover
+        run: ./gradlew koverMergedHtmlReport
+
+      - name: Archive code coverage reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: CodeCoverageReports
+          path: build/reports/kover/merged/
+
+      - name: Build staging APK
+        run: ./gradlew assembleStagingDebug
+
+      - name: Deploy staging to Firebase
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{secrets.FIREBASE_APP_ID_STAGING}}
+          token: ${{secrets.FIREBASE_TOKEN}}
+          groups: testers
+          file: app/build/outputs/apk/staging/debug/app-staging-debug.apk
+
+      - name: Build production APK
+        run: ./gradlew assembleProductionDebug
+
+      - name: Deploy production to Firebase
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{secrets.FIREBASE_APP_ID_PRODUCTION}}
+          token: ${{secrets.FIREBASE_TOKEN}}
+          groups: testers
+          file: app/build/outputs/apk/production/debug/app-production-debug.apk

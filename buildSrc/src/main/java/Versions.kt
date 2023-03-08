@@ -27,6 +27,9 @@ object Versions {
     const val HILT_VERSION = "2.44"
     const val HILT_NAVIGATION_COMPOSE_VERSION = "1.0.0"
 
+    const val GOOGLE_FIREBASE_BOM_VERSION = "31.2.2"
+    const val GOOGLE_SERVICES_VERSION = "4.3.15"
+
     const val JAVAX_INJECT_VERSION = "1"
 
     const val KOTLIN_VERSION = "1.8.10"
