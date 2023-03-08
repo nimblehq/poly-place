@@ -41,14 +41,23 @@ fun NearbyRestaurantsScreen(
 ) {
     val uiModels: List<UiModel> by viewModel.uiModels.collectAsState()
 
-    LocationPermission(onGrantedLocationPermission, uiModels)
+    LaunchedEffect(viewModel.navigator) {
+        viewModel.navigator.collect { destination -> navigator(destination) }
+    }
+
+    LocationPermission(
+        onGrantedLocationPermission = onGrantedLocationPermission,
+        uiModels = uiModels,
+        onRestaurantItemClicked = viewModel::navigateToRestaurantDetails
+    )
 }
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun LocationPermission(
     onGrantedLocationPermission: () -> Unit,
-    uiModels: List<UiModel>
+    uiModels: List<UiModel>,
+    onRestaurantItemClicked: (Restaurant) -> Unit
 ) {
     val locationPermissionState = rememberPermissionState(
         Manifest.permission.ACCESS_FINE_LOCATION
@@ -56,7 +65,10 @@ fun LocationPermission(
 
     if (locationPermissionState.status.isGranted) {
         onGrantedLocationPermission()
-        NearbyRestaurantsContent(uiModels = uiModels)
+        NearbyRestaurantsContent(
+            uiModels = uiModels,
+            onRestaurantItemClicked = onRestaurantItemClicked
+        )
     } else {
         val locationPermissionResId = if (locationPermissionState.status.shouldShowRationale) {
             R.string.location_permission_rationale
@@ -73,7 +85,8 @@ fun LocationPermission(
 
 @Composable
 private fun NearbyRestaurantsContent(
-    uiModels: List<UiModel>
+    uiModels: List<UiModel>,
+    onRestaurantItemClicked: (Restaurant) -> Unit
 ) {
     // Mock data for UI task
     // TODO: Remove this when implementing integrate task: https://github.com/nimblehq/poly-place/issues/32
@@ -168,7 +181,10 @@ private fun NearbyRestaurantsContent(
                 )
         ) {
             NearbyRestaurantsToolbar()
-            NearbyRestaurantList(mockRestaurants)
+            NearbyRestaurantList(
+                restaurants = mockRestaurants,
+                onRestaurantItemClicked = onRestaurantItemClicked
+            )
         }
     }
     Timber.d("Result : $uiModels")
@@ -221,7 +237,8 @@ private fun NearbyRestaurantsToolbar() {
 
 @Composable
 private fun NearbyRestaurantList(
-    restaurants: List<Restaurant>
+    restaurants: List<Restaurant>,
+    onRestaurantItemClicked: (Restaurant) -> Unit,
 ) {
     LazyVerticalGrid(
         modifier = Modifier
@@ -235,7 +252,12 @@ private fun NearbyRestaurantList(
             items = restaurants,
             key = { it.id }
         ) { item ->
-            NearbyRestaurantItem(item)
+            NearbyRestaurantItem(
+                restaurant = item,
+                onItemClicked = {
+                    onRestaurantItemClicked(item)
+                }
+            )
         }
     }
 }
@@ -245,7 +267,8 @@ private fun NearbyRestaurantList(
 private fun NearbyRestaurantsPreview() {
     ComposeTheme {
         NearbyRestaurantsContent(
-            uiModels = listOf(UiModel(1), UiModel(2), UiModel(3))
+            uiModels = listOf(UiModel(1), UiModel(2), UiModel(3)),
+            onRestaurantItemClicked = {}
         )
     }
 }

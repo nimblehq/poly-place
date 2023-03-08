@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
@@ -29,11 +30,14 @@ fun RestaurantDetailsScreen(
     navigator: (destination: AppDestination) -> Unit,
     restaurant: Restaurant?
 ) {
+    LaunchedEffect(viewModel.navigator) {
+        viewModel.navigator.collect { destination -> navigator(destination) }
+    }
 
     restaurant?.let {
         RestaurantDetailsContent(
             restaurant = it,
-            onBackButtonClicked = { navigator(AppDestination.Up) }
+            onBackButtonClicked = viewModel::navigateBack
         )
     }
 }
