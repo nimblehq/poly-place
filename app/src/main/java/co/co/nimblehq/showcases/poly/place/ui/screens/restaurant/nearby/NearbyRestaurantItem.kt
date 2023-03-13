@@ -30,20 +30,22 @@ fun NearbyRestaurantItem(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(dimensions.spacingSmallest)
     ) {
-        Image(
-            modifier = Modifier
-                .fillMaxWidth()
-                .aspectRatio(1.1f)
-                .clip(
-                    RoundedCornerShape(
-                        topStart = dimensions.spacingSmall,
-                        topEnd = dimensions.spacingSmall
-                    )
-                ),
-            bitmap = restaurant.thumbnailImage.asImageBitmap(),
-            contentScale = ContentScale.Crop,
-            contentDescription = null
-        )
+        restaurant.thumbnailImage?.let {
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(1.1f)
+                    .clip(
+                        RoundedCornerShape(
+                            topStart = dimensions.spacingSmall,
+                            topEnd = dimensions.spacingSmall
+                        )
+                    ),
+                bitmap = it.asImageBitmap(),
+                contentScale = ContentScale.Crop,
+                contentDescription = null
+            )
+        }
         Text(
             modifier = Modifier.fillMaxWidth(),
             color = Color.White,
