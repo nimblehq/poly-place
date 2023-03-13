@@ -1,6 +1,7 @@
 package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
@@ -24,10 +25,13 @@ import java.util.*
 
 @Composable
 fun NearbyRestaurantItem(
-    restaurant: Restaurant
+    restaurant: Restaurant,
+    onItemClicked: (restaurant: Restaurant) -> Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onItemClicked(restaurant) },
         verticalArrangement = Arrangement.spacedBy(dimensions.spacingSmallest)
     ) {
         restaurant.thumbnailImage?.let {
@@ -80,7 +84,8 @@ private fun NearbyRestaurantItemPreview() {
                 name = "Dragon X",
                 address = "111, Dr. Strange street",
                 distance = "50 m"
-            )
+            ),
+            onItemClicked = {}
         )
     }
 }

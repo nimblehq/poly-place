@@ -1,5 +1,6 @@
 package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.details
 
+import co.co.nimblehq.showcases.poly.place.ui.AppDestination
 import co.co.nimblehq.showcases.poly.place.ui.base.BaseViewModel
 import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.uimodel.Restaurant
 import co.co.nimblehq.showcases.poly.place.util.DispatchersProvider
@@ -16,4 +17,8 @@ class RestaurantDetailsViewModel @Inject constructor(
     private val _restaurant = MutableSharedFlow<Restaurant>()
     val restaurant: SharedFlow<Restaurant>
         get() = _restaurant
+
+    fun navigateBack() {
+        execute { _navigator.emit(AppDestination.Up) }
+    }
 }

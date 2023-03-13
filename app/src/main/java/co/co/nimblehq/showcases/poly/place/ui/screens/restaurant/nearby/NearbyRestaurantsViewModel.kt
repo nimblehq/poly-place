@@ -3,7 +3,9 @@ package co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.nearby
 import co.co.nimblehq.showcases.poly.place.domain.usecase.UseCase
 import co.co.nimblehq.showcases.poly.place.model.UiModel
 import co.co.nimblehq.showcases.poly.place.model.toUiModel
+import co.co.nimblehq.showcases.poly.place.ui.AppDestination
 import co.co.nimblehq.showcases.poly.place.ui.base.BaseViewModel
+import co.co.nimblehq.showcases.poly.place.ui.screens.restaurant.uimodel.Restaurant
 import co.co.nimblehq.showcases.poly.place.util.DispatchersProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -32,5 +34,9 @@ class NearbyRestaurantsViewModel @Inject constructor(
                 }
             hideLoading()
         }
+    }
+
+    fun navigateToRestaurantDetails(restaurant: Restaurant) {
+        execute { _navigator.emit(AppDestination.RestaurantDetails.addParcel(restaurant)) }
     }
 }

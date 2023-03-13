@@ -18,8 +18,12 @@ fun AppNavigation(
     ) {
         composable(AppDestination.NearbyRestaurants) {
             NearbyRestaurantsScreen(
-                navigator = { destination -> navController.navigate(destination) },
-                onGrantedLocationPermission = { /* TODO: Call Places SDK in https://github.com/nimblehq/poly-place/issues/32 */ }
+                navigator = { destination ->
+                    navController.navigate(destination, destination.parcelableArgument)
+                },
+                onGrantedLocationPermission = {
+                    /* TODO: Call Places SDK in https://github.com/nimblehq/poly-place/issues/32 */
+                }
             )
         }
 
@@ -50,5 +54,27 @@ private fun NavHostController.navigate(appDestination: AppDestination) {
     when (appDestination) {
         is AppDestination.Up -> navigateUp()
         else -> navigate(route = appDestination.destination)
+    }
+}
+
+/**
+ * Navigate to provided [AppDestination] with a Pair of key value String and Data [parcel]
+ * Caution to use this method. This method use savedStateHandle to store the Parcelable data.
+ * When previousBackstackEntry is popped out from navigation stack,
+ * savedStateHandle will return null and cannot retrieve data.
+ * eg.Login -> Home, the Login screen will be popped from the back-stack on logging in successfully.
+ */
+private fun NavHostController.navigate(
+    appDestination: AppDestination,
+    parcel: Pair<String, Any?>? = null
+) {
+    when (appDestination) {
+        is AppDestination.Up -> navigateUp()
+        else -> {
+            parcel?.let { (key, value) ->
+                currentBackStackEntry?.savedStateHandle?.set(key, value)
+            }
+            navigate(route = appDestination.destination)
+        }
     }
 }
