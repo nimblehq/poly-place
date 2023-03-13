@@ -89,15 +89,17 @@ private fun RestaurantDetails(
     modifier: Modifier = Modifier
 ) {
     Column(modifier) {
-        Image(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = dimensions.spacingNormal)
-                .aspectRatio(0.94f),
-            bitmap = restaurant.thumbnailImage.asImageBitmap(),
-            contentScale = ContentScale.Crop,
-            contentDescription = null
-        )
+        restaurant.thumbnailImage?.let {
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = dimensions.spacingNormal)
+                    .aspectRatio(0.94f),
+                bitmap = it.asImageBitmap(),
+                contentScale = ContentScale.Crop,
+                contentDescription = null
+            )
+        }
         StartDrawableText(
             modifier = Modifier
                 .padding(top = 28.dp)
@@ -127,7 +129,7 @@ private fun RestaurantDetailsPreview() {
                 thumbnailImage = ContextCompat.getDrawable(
                     LocalContext.current,
                     R.drawable.im_restaurant_mock
-                )!!.toBitmap(width = 600, height = 600),
+                )?.toBitmap(width = 600, height = 600),
                 name = "Dragon X",
                 address = "111, Dr. Strange street",
                 distance = "50 m"
